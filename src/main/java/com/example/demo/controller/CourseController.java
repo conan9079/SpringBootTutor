@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.modal.Course;
+import com.example.demo.modal.TwoSum;
 import com.example.demo.modal.dto.CourseDto;
 import com.example.demo.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +9,9 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 // single function interface
@@ -48,6 +47,23 @@ public class CourseController {
 
         return new ResponseEntity(findedCourse, HttpStatus.OK);
     }
+
+    @GetMapping(path = "/twoSum/{target}", produces = "application/json")
+    public HttpEntity<Course> twoSumTargetIndex(@PathVariable("target") Integer inputInteger) {
+
+        List<Integer> findedIndex = courseService.getTwoSumIndex(inputInteger);
+
+        return new ResponseEntity(findedIndex, HttpStatus.OK);
+    }
+
+    @PostMapping(path =  "/twoSum", produces = "application/json")
+    public HttpEntity<Course> twoSumTargetIndexWithInputList(@Valid @RequestBody TwoSum twoSum) {
+
+        List<Integer> findedIndex = courseService.getTwoSumIndex(twoSum);
+
+        return new ResponseEntity(findedIndex, HttpStatus.OK);
+    }
+
 
     // HW1: 2 sum
     // HW2: 2 sum number list Pass by request body

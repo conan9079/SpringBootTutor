@@ -4,13 +4,12 @@ import com.example.demo.modal.Course;
 import com.example.demo.modal.Instructor;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Repository
 public class CourseRepository {
     List<Course> courses = new ArrayList<>();
+    Integer[] numbers = {1, 3, 5, 2, 3, 2, 7, 8};
 
     // constructor
     public CourseRepository() {
@@ -50,5 +49,9 @@ public class CourseRepository {
         }
 
         return new ArrayList<Course>();
+    }
+
+    public Integer[] getNumbers() {
+        return numbers;
     }
 }
