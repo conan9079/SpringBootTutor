@@ -22,6 +22,9 @@ public class CourseController {
 
     @Autowired // IOC 控制反转
     CourseService courseService; // Singleton
+    //1. new CourseService
+    //2. 封装了一层Bean
+    //3. Autowired 封装的Service 是一个Singleton
     //依赖注入 Dependency Injection
 
     @GetMapping(path = "/", produces = "application/json") //如果你用get方法 call我这个地址
@@ -45,6 +48,9 @@ public class CourseController {
 
         return new ResponseEntity(findedCourse, HttpStatus.OK);
     }
+
+    // HW1: 2 sum
+    // HW2: 2 sum number list Pass by request body
 }
 
 // 增加一个课程/删除一个课程/更新一个课程信息
